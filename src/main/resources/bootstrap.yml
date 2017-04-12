@@ -9,3 +9,12 @@ spring:
       server:
         git:
           uri: https://github.com/llahn/spring-cloud-config-yaml
+
+#spring:
+#  application:
+#    name: test
+#  cloud:
+#    config:
+#      env: default
+#      label: master
+#      uri: http://localhost:8888

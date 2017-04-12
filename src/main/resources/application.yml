@@ -1,2 +1,9 @@
 server:
   port: 8888
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/llahn/spring-cloud-config-yaml
+          searchPaths: bboss-balance   #本例访问的是bboss-balance文件夹下的配置。扫描Git上的哪个路径下的配置文件，默认是根路径，如果是默认路径，则可以不用配置searchPaths属性

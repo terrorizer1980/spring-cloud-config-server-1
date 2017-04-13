@@ -1,9 +1,33 @@
 server:
   port: 8888
 spring:
-  cloud:
+  # 选择配置信息环境配置
+  #   如果Git(默认为Git不需要配置这里)配置信息，注释掉即可；
+  #   如果是本地配置信息，设置为 'native'；
+  #   如果是SVN配置信息，设置为 'subversion'；
+  #   其它后续用到在整理
+  profiles:
+    active: native
+  # 配置信息所在地址配置
+  cloud: 
     config:
       server:
-        git:
-          uri: https://github.com/llahn/spring-cloud-config-yaml
-          searchPaths: bboss-balance   #本例访问的是bboss-balance文件夹下的配置。扫描Git上的哪个路径下的配置文件，默认是根路径，如果是默认路径，则可以不用配置searchPaths属性
+        # 访问Git上的配置信息
+        # uri：配置Git的路径
+        # searchPaths：扫描Git上的哪个路径下的配置文件，默认是根路径，如果是默认路径，则可以不用配置searchPaths属性
+        #   本例访问的是bboss-balance文件夹下的配置。
+        #git:
+        #  uri: https://github.com/llahn/spring-cloud-config-yaml
+        #  searchPaths: bboss-balance
+        # 访问本地
+        # searchLocations： 指定本地的配置文件路径
+        #   如果访问开发环境上的配置信息，则配置为：classpath:/config 
+        #   如果访问本地物理环境的配置如：file:C:\Li_Lei\Github\repository\spring-cloud-config-yaml\bboss-balance
+        native:
+          searchLocations: file:C:\Li_Lei\Github\repository\spring-cloud-config-yaml\bboss-balance
+        # 访问SVN环境 同样需要配置SVN的地址，需要配置用户名和密码
+        #svn:
+        #  uri: 
+        #  useername:
+        #  password: 
+
